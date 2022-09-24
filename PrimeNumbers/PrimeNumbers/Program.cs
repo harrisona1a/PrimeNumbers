@@ -1,26 +1,38 @@
-﻿namespace PrimeNumbers
+﻿using System.Diagnostics;
+
+
+namespace PrimeNumbers
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            List<int> lst = new List<int>();
             int prints = 0;
-            for (int i = 0; prints < 1000; i++)
+            lst.Add(2);
+            for (int i = 3; prints < 1000000 -1; i++)
             {
-                int count = 0;
-                for (int j = 1; j < i+1; j++)
+                if (i % 2 != 0)
                 {
-                    if (i % j == 0)
+                    int count = 0;
+                    for (int j = 2; j <= Math.Sqrt(i); j++)
                     {
-                        count++;
+                        if (i % j == 0)
+                        {
+                            count++;
+                            break;
+                        }
+                    }
+                    if (count == 0)
+                    {
+                        //Debug.Print(i.ToString());
+                        //lst.Add(i);
+                        prints++;
                     }
                 }
-                if (count == 2)
-                {
-                    Console.WriteLine(i);
-                    prints++;
-                }//test
             }
+            //foreach (var num in lst)
+                //Console.WriteLine(num);
         }
     }
 }
